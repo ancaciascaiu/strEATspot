@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923195011) do
+ActiveRecord::Schema.define(version: 20160925033854) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "username",               default: "", null: false
@@ -25,17 +25,12 @@ ActiveRecord::Schema.define(version: 20160923195011) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "customers", ["confirmation_token"], name: "index_customers_on_confirmation_token", unique: true
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
