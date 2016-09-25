@@ -15,6 +15,9 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  
+   #added this: for email confirmation. Also see config/environments/production.rb
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -38,4 +41,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # To properly generate links inside the email views
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
