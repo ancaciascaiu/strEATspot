@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
 
-  devise_for :customers, :controllers => { registrations: 'registrations' }
-  # resources :customers
+  devise_for :customers#, :controllers => { registrations: 'registrations' }
   
+  # resources :customers
+
   root 'welcome#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -34,6 +34,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       ## GPS keys
       t.float :latitude 
       t.float :longitude
+      
       t.timestamps null: false
     end
 
