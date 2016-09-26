@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160925213539) do
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
   add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true, using: :btree
+  add_index "vendors", ["username"], name: "index_vendors_on_username", unique: true, using: :btree
 
   create_table "vendorscategories", force: :cascade do |t|
     t.integer  "vendor_id"
