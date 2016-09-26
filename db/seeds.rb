@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #passwords are "hungry"/"sohungry"
-Customer.create(username: "Alex", email: "alex@hungry.com", encrypted_password: "$2a$11$Mr8m7Kz5GR9tzHhaw52iJONxDKgwlTBFW0yECQPyaeGWnpQRUe0Ze")
-Customer.create(username: "Michelle", email: "michelle@sohungry.com", encrypted_password: "$2a$11$Gf/F/KSu85ADBthHFIGNv.E2N2wo/8MtfVHQHVEzCMfW0OpNNttHe")
+Customer.create(username: "Alex", email: "alex@hungry.com", password: "hungry")
+Customer.create(username: "Michelle", email: "michelle@sohungry.com", password: "sohungry")
 
 #all passwords are banana:
-Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", encrypted_password: "$2a$11$OlFuYullKlRSRZKqSCVAMuVFGbVQMyO57/gOk9aDmdKYw3BRLYH1K", schedule: "M-F 8-3, S,S 10-10")
-Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", encrypted_password: "$2a$11$P1DmsiOCKAQNcju5PK0GwuFWSp2LamSk0IuvGvNsNSEft30.QXCLa", schedule: "T-F 9-3, S,S 9-10")
-Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", encrypted_password: "$2a$11$4VwP10UfyB9tm88PSKYiaOq/3jQDIrm.nB.GwgBBRM3uC0T3qBfna", schedule: "M-F 10-6, S,S 8-7")
-Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", encrypted_password: "$2a$11$hEOoHmK49plSxqnuQjYJbOzcdfPxRpCyAnnMJdw.cke0OtL0ujqqW", schedule: "T-F 8-5, S,S 9-8")
-Vendor.create(username:  "Ellie's Elegant Eclairs", email: "ellie@eclairs.com", encrypted_password: "$2a$11$JAjtQOuYuX3EXQiNB0.S5OQLlEybLKHzy1ZsGF5kYxwhtahNGOEvK", schedule: "W-F 11-8, S,S 9-5")
-Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", encrypted_password: "$2a$11$wHc2eptwRADfwtfZzmoqdOXTnBRpZ0jFXoL0Jd6d6579QGdjmu9mG", schedule: "W-F 11-8, S,S 9-5")
+Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", password: "banana", schedule: "M-F 8-3, S,S 10-10")
+Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "banana", schedule: "T-F 9-3, S,S 9-10")
+Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7")
+Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8")
+Vendor.create(username:  "Ellie's Elegant Eclairs", email: "ellie@eclairs.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
+Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
 
 Favorite.create(customer_id: 2, vendor_id: 1)
 Favorite.create(customer_id: 2, vendor_id: 3)
