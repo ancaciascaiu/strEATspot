@@ -1,0 +1,24 @@
+<h1><%= @vendor.username %></h1>
+
+<div id='schedule'> 
+	<h2>Schedule</h2>
+	<%= @vendor.schedule %>
+</div>
+<br>
+
+<div id= 'profpic'>
+	<h3>profile picture goes here</h3>
+</div>
+<br>
+
+<div> 
+	<h2>Menu</h2>
+		Menu GOES HERERERERERE
+</div>
+<br>
+
+<h2>Categories</h2>
+<% @vendor.foodcategories.each do |category|  %>
+	<%= category.name %><br>
+	<!-- link to each cateogry show page when clicked on -->
+<% end %>
