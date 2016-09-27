@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post "/favorites", to: 'favorites#create'
 
+  post "/foodcategories", to: 'foodcategories#create'
+
   # resources :favorites
   # resources :customers
 
