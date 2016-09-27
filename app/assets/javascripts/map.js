@@ -74,7 +74,7 @@ function initMap(markers) {
       };
       var userCoords = new google.maps.LatLng(pos.lat, pos.lng);
       console.log(pos);
-      circle.center = userCoords;
+      circle.setCenter = userCoords;
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -107,5 +107,23 @@ var createMarkers = function(markers, userPosition, circle){
       });
 
     } else { };
+  }
+};
+
+var getVendorLocation = function(){
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      return pos;
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
   }
 };

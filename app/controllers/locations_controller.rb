@@ -1,0 +1,1 @@
+locations_controller.rb
