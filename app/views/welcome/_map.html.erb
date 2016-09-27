@@ -1,17 +1,6 @@
 <div id="map"></div>
-    <script>
-    // Store all locations
-      var markerArray = [
-        {lat: 41.878674, lng: -87.640333},
-        {lat: 41.878274, lng: -87.640330},
-        {lat: 41.878644, lng: -87.640303},
-        {lat: 41.873674, lng: -87.640033},
-        {lat: 41.878670, lng: -87.620333},
-        {lat: 41.858674, lng: -87.640000},
-        {lat: 41.878994, lng: -87.649533},
-        {lat: 41.778674, lng: -87.540333},
-        {lat: 41.878600, lng: -87.644003}
-      ];
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4CEiXTwjIBPixJVQ45g7gAQaJFCGpZJg&callback=initMap"
+    async defer>
 
       initMap();
 
@@ -25,6 +14,3 @@
       display: inline;
     }
     </style>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4CEiXTwjIBPixJVQ45g7gAQaJFCGpZJg&callback=initMap"
-    async defer></script>
