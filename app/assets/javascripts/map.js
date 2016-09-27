@@ -89,7 +89,7 @@ function initMap(markers) {
 };
 
 var createMarkers = function(markers, userPosition, circle){
-  // var image = './dooftruck.png';
+  var image = './dooftruck.png';
     console.log(userPosition);
     console.log(circle.radius);
 
@@ -102,7 +102,7 @@ var createMarkers = function(markers, userPosition, circle){
       new google.maps.Marker({
         position: markers[i],
         map: map,
-        // icon: image,
+        icon: image,
         animation: google.maps.Animation.DROP
       });
 
