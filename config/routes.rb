@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
   devise_for :customers#, :controllers => { registrations: 'registrations' }
 
- 
-  
+  post "/favorites", to: 'favorites#create'
+
+  # resources :favorites
   # resources :customers
 
   # Example of regular route:
