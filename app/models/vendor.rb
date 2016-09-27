@@ -10,6 +10,6 @@ class Vendor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #hello i am for paperclip
-	has_attached_file :avatar, :styles => { :medium => "300x300>", :large => "400x400#" }, :default_url => "./missing.png"
+	has_attached_file :avatar, :styles => { :medium => "300x300>", :large => "400x400#" }, :default_url => "./images/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end
