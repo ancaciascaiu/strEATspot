@@ -73,7 +73,6 @@ function initMap(markers) {
         lng: position.coords.longitude
       };
       var userCoords = new google.maps.LatLng(pos.lat, pos.lng);
-      console.log(pos);
       circle.setCenter = userCoords;
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -84,14 +83,11 @@ function initMap(markers) {
     handleLocationError(false, infoWindow, map.getCenter());
   }
   var customerPosition = new google.maps.LatLng(circle.center.lat(), circle.center.lng());
-  console.log(circle.center.lat());
   createMarkers(markerArray, customerPosition, circle);
 };
 
 var createMarkers = function(markers, userPosition, circle){
   // var image = './dooftruck.png';
-    console.log(userPosition);
-    console.log(circle.radius);
 
 // Iterates through all stored map markers
   for(var i = 0; i < markers.length; i++){
@@ -111,19 +107,21 @@ var createMarkers = function(markers, userPosition, circle){
 };
 
 var getVendorLocation = function(){
-    if (navigator.geolocation) {
+  var deferred = new $.Deferred();
+  console.log("success");
+  if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      return pos;
-    }, function() {
+      deferred.resolve(pos);
+    }), function() {
       handleLocationError(true, infoWindow, map.getCenter());
-    });
-
+    };
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+    return deferred.promise();
 };

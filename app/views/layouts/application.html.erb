@@ -23,7 +23,7 @@
 	          </li>
 	        <% elsif vendor_signed_in? %>
 	        	<li>
-	            
+
 	            <ul>
 	              <li><%= link_to "#{current_vendor.username}", edit_vendor_registration_path %></li>
 	              <li><%= link_to 'Log out', destroy_vendor_session_path, method: :delete %></li>
@@ -44,6 +44,7 @@
 	    </div>
 	  </div>
 	</nav>
+
 	<div class="container">
 	  <% flash.each do |key, value| %>
 	    <div class="alert alert-<%= key %>">
@@ -52,6 +53,22 @@
 	  <% end %>
 	</div>
 
+	<div class="location-toggle">
+		<p>Toggle to display location:</p>
+		<% if vendor_signed_in? %>
+			<% if current_vendor.latitude && current_vendor.longitude %>
+				<label class="switch">
+				  <input type="checkbox" checked>
+				  <div class="slider round"></div>
+				</label>
+			<% else %>
+				<label class="switch">
+				  <input type="checkbox">
+				  <div class="slider round"></div>
+				</label>
+			<% end %>
+		<% end %>
+	</div>
 
 	<%= yield %>
 

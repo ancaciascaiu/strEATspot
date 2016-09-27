@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  
+
   get '/foodcategories/show', to: 'foodcategories#show'
 
   get 'welcome/index'
 
   root 'welcome#index'
+
   get 'welcome/index'
-  
+
   devise_for :vendors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,8 +16,8 @@ Rails.application.routes.draw do
 
   devise_for :customers#, :controllers => { registrations: 'registrations' }
 
- 
-  
+  post 'locations', to: 'locations#create'
+
   # resources :customers
 
   # Example of regular route:
