@@ -101,7 +101,7 @@ Rails.application.configure do
 #   }
 # }
 
-# figure out where these should go so they cant be seen on github
+# # figure out where these should go so they cant be seen on github
 # $ heroku config:set S3_BUCKET_NAME=your_bucket_name
 # $ heroku config:set AWS_ACCESS_KEY_ID=your_access_key_id
 # $ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key
