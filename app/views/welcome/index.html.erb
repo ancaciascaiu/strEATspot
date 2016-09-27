@@ -1,4 +1,13 @@
-<p>"Hi, it's me!"</p>
-<% if current_customer %>
-<p> Helloooooooooo <%= current_customer.username.capitalize %></p>
-<% end %>
+
+<div>
+	<% if customer_signed_in? %>
+		<p>Active favorites:</p>
+		<p>!!!Show only active favorites!!!</p>
+	<% else %>
+		<p>Please LOG IN to view your favorites!</p>
+	<% end %>
+</div><br>
+
+<div>map</div><br>
+
+<div><%= render 'filter' %></div>
