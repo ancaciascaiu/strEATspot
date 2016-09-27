@@ -1,18 +1,22 @@
 $(document).ready(function(){
   // AJAX for vendor location button
-  $('.switch').on('click', function(event){
+  $('#location-toggle').on('click', '.switch', function(event){
     event.preventDefault();
-      console.log($(this).find('input')[0]);
+    var $button = $(this)
+    var $input = $(this).find('input')
     // checks to see if button is switched on or off
-    if($(this).find('input')[0].hasAttribute('checked') === false){
-
+    if($input[0].hasAttribute('checked') === false){
+      // gets location and send coords to controller for vendor update
       getVendorLocation().then(function(dataNew){
-        console.log(dataNew);
         var request = $.ajax({
-          url: '/locations',
+          url: 'locations',
           method: 'POST',
           data: dataNew
         });
+        // toggles button display with response
+        request.done(function(response){
+          $button.replaceWith(response);
+        })
       });
 
     } else {
@@ -20,6 +24,10 @@ $(document).ready(function(){
         url: '/locations',
         method: 'DELETE'
       });
+      // toggles button display with response
+      request.done(function(response){
+        $button.replaceWith(response);
+      })
     };
   });
 });

@@ -87,28 +87,18 @@ function initMap(markers) {
 };
 
 var createMarkers = function(markers, userPosition, circle){
-  // var image = './dooftruck.png';
-
 // Iterates through all stored map markers
   for(var i = 0; i < markers.length; i++){
     var newMarkerCoordinates = new google.maps.LatLng(markers[i].lat, markers[i].lng);
 
     if(radiusCheck(userPosition, newMarkerCoordinates, circle.radius) == true){
-
-      new google.maps.Marker({
-        position: markers[i],
-        map: map,
-        // icon: image,
-        animation: google.maps.Animation.DROP
-      });
-
+      createMarker(markers[i]);
     } else { };
   }
 };
 
 var getVendorLocation = function(){
   var deferred = new $.Deferred();
-  console.log("success");
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -125,3 +115,13 @@ var getVendorLocation = function(){
   }
     return deferred.promise();
 };
+
+var createMarker = function(marker){
+  // var image = './dooftruck.png';
+  new google.maps.Marker({
+    position: marker,
+    map: map,
+    // icon: image,
+    animation: google.maps.Animation.DROP
+  })
+}

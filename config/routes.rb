@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :customers#, :controllers => { registrations: 'registrations' }
 
   post 'locations', to: 'locations#create'
-
+  delete 'locations', to: 'locations#delete'
   # resources :customers
 
   # Example of regular route:
