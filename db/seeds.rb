@@ -17,9 +17,9 @@ Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password
 Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8", latitude: 41.873674, longitude: -87.640033)
 Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.878670, longitude: -87.620333)
 Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.858674, longitude: -87.640000)
-  {title: "My Taco Truck", coords: {lat: 41.878994, lng: -87.649533}},
-  {title: "West's East Side, Boat Side Smoothies", coords: {lat: 41.778674, lng: -87.540333}},
-  {title: "Tory's Tortillas", coords: {lat: 41.878600, lng: -87.644003}}
+Vendor.create(username: "My Taco Truck", email: "taco@truck.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878994, longitude: -87.649533)
+Vendor.create(username: "West's East Side, Boat Side Smoothies", email: "west@smoothies.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.778674, longitude: -87.540333)
+Vendor.create(username: "Tory's Tortillas", email: "tory@tortillas.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878600, longitude: -87.644003)
 
 Favorite.create(customer_id: 2, vendor_id: 1)
 Favorite.create(customer_id: 2, vendor_id: 3)
