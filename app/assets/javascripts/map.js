@@ -3,19 +3,6 @@ var rad = function(x) {
   return x * Math.PI / 180;
 };
 
-// Store all locations
-var markerArray = [
-  {lat: 41.878674, lng: -87.640333},
-  {lat: 41.878274, lng: -87.640330},
-  {lat: 41.878644, lng: -87.640303},
-  {lat: 41.873674, lng: -87.640033},
-  {lat: 41.878670, lng: -87.620333},
-  {lat: 41.858674, lng: -87.640000},
-  {lat: 41.878994, lng: -87.649533},
-  {lat: 41.778674, lng: -87.540333},
-  {lat: 41.878600, lng: -87.644003}
-];
-
 // Gets distance between two coordinates
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
@@ -44,9 +31,24 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
 };
+
+// Store all locations
+var markerArray = [
+  {title:  "Avnerosmith's Banana Blitz", coords: {lat: 41.878674, lng: -87.640333}},
+  {title:  "The Baker Brats", coords: {lat: 41.878274, lng: -87.640330}},
+  {title:  "3 Duke's Greene's", coords: {lat: 41.878644, lng: -87.640303}},
+  {title:  "Pete's Pristine Perfect Pineapple Pizza", coords: {lat: 41.873674, lng: -87.640033}},
+  {title:  "Ellie's Deli", coords: {lat: 41.878670, lng: -87.620333}},
+  {title:  "Alycit Confec-ssions", coords: {lat: 41.858674, lng: -87.640000}},
+  {title: "My Taco Truck", coords: {lat: 41.878994, lng: -87.649533}},
+  {title: "West's East Side, Boat Side Smoothies", coords: {lat: 41.778674, lng: -87.540333}},
+  {title: "Tory's Tortillas", coords: {lat: 41.878600, lng: -87.644003}}
+];
+
 var map;
-var circle;
+
 var radius = 1500;
+
 // Initialize map
 function initMap() {
 
@@ -57,7 +59,7 @@ function initMap() {
   });
 
   // Creates the circle
-  circle = new google.maps.Circle({
+  var circle = new google.maps.Circle({
     center: map.center,
     map: map,
     radius: radius, // ~1 MILE IN METERS.
@@ -79,11 +81,11 @@ function initMap() {
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  // Sets radius and filters by customer location
   var customerPosition = new google.maps.LatLng(circle.center.lat(), circle.center.lng());
   createMarkers(markerArray, customerPosition, circle);
 };
@@ -91,18 +93,13 @@ function initMap() {
 var createMarkers = function(markers, userPosition, circle){
 // Iterates through all stored map markers
   for(var i = 0; i < markers.length; i++){
-    var newMarkerCoordinates = new google.maps.LatLng(markers[i].lat, markers[i].lng);
+    var newMarkerCoordinates = new google.maps.LatLng(markers[i].coords.lat, markers[i].coords.lng);
 
     if(radiusCheck(userPosition, newMarkerCoordinates, circle.radius) == true){
-      createMarker(markers[i]);
+      createMarker(markers[i].title, markers[i]);
     } else { };
   }
 };
-
-// Removes markers from map
-var clearMarkers = function() {
-  setMapOnAll(null);
-}
 
 // Gets the location of a vendor on button click
 var getVendorLocation = function(){
@@ -126,12 +123,13 @@ var getVendorLocation = function(){
     return deferred.promise();
 };
 
-var createMarker = function(marker){
+var createMarker = function(markerTitle, marker){
   var image = './dooftruck.png';
   new google.maps.Marker({
-    position: marker,
+    position: marker.coords,
     map: map,
     icon: image,
+    title: marker.title,
     animation: google.maps.Animation.DROP
   })
 }

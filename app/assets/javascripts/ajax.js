@@ -30,11 +30,28 @@ $(document).ready(function(){
       })
     };
   });
-  // AJAX for updating circle radius
+  // jQuery for updating circle radius
   $("#radius-form").on('submit', function(event){
     event.preventDefault();
     var radiusString = $(this).children('#slider').val();
     radius = parseInt(radiusString);
     initMap();
   });
+  // AJAX for grabbing favorites
+  $('#favorites-form').on('submit', function(event){
+    event.preventDefault();
+      $form = $(this);
+
+    var request = $.ajax({
+      url: $form.attr('action'),
+      method: $form.attr('method')
+    });
+
+    request.done(function(response){
+      markerArray = response;
+      initMap();
+    })
+  })
 });
+
+

@@ -11,12 +11,12 @@ Customer.create(username: "Alex", email: "alex@hungry.com", password: "hungry")
 Customer.create(username: "Michelle", email: "michelle@sohungry.com", password: "sohungry")
 
 #all passwords are banana:
-Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", password: "banana", schedule: "M-F 8-3, S,S 10-10")
-Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "banana", schedule: "T-F 9-3, S,S 9-10")
-Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7")
-Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8")
-Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
-Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
+Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", password: "banana", schedule: "M-F 8-3, S,S 10-10", latitude: 41.878674, longitude: -87.640333)
+Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "banana", schedule: "T-F 9-3, S,S 9-10", latitude: 41.878274, longitude: -87.640330)
+Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7", latitude: 41.878644, longitude: -87.640303)
+Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8", latitude: 41.873674, longitude: -87.640033)
+Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.878670, longitude: -87.620333)
+Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.858674, longitude: -87.640000)
 
 Favorite.create(customer_id: 2, vendor_id: 1)
 Favorite.create(customer_id: 2, vendor_id: 3)

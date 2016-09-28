@@ -16,19 +16,6 @@ ActiveRecord::Schema.define(version: 20160927204556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cohorts", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "pitchable",  default: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
@@ -72,42 +59,6 @@ ActiveRecord::Schema.define(version: 20160927204556) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title",                    null: false
-    t.text     "description",              null: false
-    t.string   "status",      default: ""
-    t.integer  "cohort_id",                null: false
-    t.integer  "team_id"
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "rounds", force: :cascade do |t|
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "votable",    default: false
-    t.integer  "cohort_id",  default: 1
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name",                    null: false
-    t.string   "last_name",                     null: false
-    t.string   "email",                         null: false
-    t.string   "password_hash",                 null: false
-    t.boolean  "teacher",       default: false
-    t.integer  "cohort_id"
-    t.integer  "team_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
   create_table "vendors", force: :cascade do |t|
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
@@ -140,15 +91,6 @@ ActiveRecord::Schema.define(version: 20160927204556) do
     t.integer  "foodcategory_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "project_id", null: false
-    t.integer  "round_id",   null: false
-    t.integer  "value",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
