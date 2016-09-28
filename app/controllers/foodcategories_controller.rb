@@ -15,7 +15,6 @@ class FoodcategoriesController < ApplicationController
   end
 
   def filter
-    p params
     category_vendors = []
     Foodcategory.find_by(id: params[:customer][:category_id]).vendors.each do |vendor|
       if vendor.latitude && vendor.longitude

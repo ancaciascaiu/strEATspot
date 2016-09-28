@@ -13,7 +13,14 @@ class LocationsController < ApplicationController
   end
 
   def get
-
+    vendors = []
+    Vendor.all.each do |vendor|
+      if vendor.latitude && vendor.longitude
+        vendors << vendor
+      end
+    end
+    locations = vendors.map{ |vendor| {title: vendor.username, coords: {lat: vendor.latitude, lng: vendor.longitude}} }
+    render :json => locations
   end
 
 end

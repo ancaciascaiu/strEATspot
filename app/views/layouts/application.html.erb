@@ -54,8 +54,8 @@
 	</div>
 
 	<div id="location-toggle">
-		<p>Toggle to display location:</p>
 		<% if vendor_signed_in? %>
+		<p>Toggle to display location:</p>
 			<% if current_vendor.latitude && current_vendor.longitude %>
 				<label class="switch">
 				  <input type="checkbox" checked>

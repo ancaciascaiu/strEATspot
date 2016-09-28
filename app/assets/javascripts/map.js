@@ -32,18 +32,20 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: Your browser doesn\'t support geolocation.');
 };
 
+var getActiveVendors = function(){
+  var request = $.ajax({
+    url: '/locations',
+    method: "GET"
+  });
+
+  request.done(function(response){
+    console.log(response);
+    markerArray = response;
+  });
+};
+
 // Store all locations
-var markerArray = [
-  {title:  "Avnerosmith's Banana Blitz", coords: {lat: 41.878674, lng: -87.640333}},
-  {title:  "The Baker Brats", coords: {lat: 41.878274, lng: -87.640330}},
-  {title:  "3 Duke's Greene's", coords: {lat: 41.878644, lng: -87.640303}},
-  {title:  "Pete's Pristine Perfect Pineapple Pizza", coords: {lat: 41.873674, lng: -87.640033}},
-  {title:  "Ellie's Deli", coords: {lat: 41.878670, lng: -87.620333}},
-  {title:  "Alycit Confec-ssions", coords: {lat: 41.858674, lng: -87.640000}},
-  {title: "My Taco Truck", coords: {lat: 41.878994, lng: -87.649533}},
-  {title: "West's East Side, Boat Side Smoothies", coords: {lat: 41.778674, lng: -87.540333}},
-  {title: "Tory's Tortillas", coords: {lat: 41.878600, lng: -87.644003}}
-];
+var markerArray = [];
 
 var map;
 
@@ -51,6 +53,8 @@ var radius = 1500;
 
 // Initialize map
 function initMap() {
+
+  getActiveVendors();
 
 // Creates a new map instance
   map = new google.maps.Map(document.getElementById('map'), {
