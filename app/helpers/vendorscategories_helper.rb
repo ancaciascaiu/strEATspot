@@ -1,0 +1,2 @@
+module VendorscategoriesHelper
+end
