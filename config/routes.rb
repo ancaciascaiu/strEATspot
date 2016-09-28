@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'items/create'
+
+  get 'items/destroy'
+
+  get 'vendorscategories/create'
+
   get '/foodcategories/show', to: 'foodcategories#show'
 
   get 'welcome/index'
@@ -14,7 +20,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  devise_for :customers#, :controllers => { registrations: 'registrations' }
+  devise_for :customers
 
   post 'locations', to: 'locations#create'
   delete 'locations', to: 'locations#delete'
@@ -22,6 +28,11 @@ Rails.application.routes.draw do
   post "/favorites", to: 'favorites#create'
 
   get "/favorites/locations/show", to: 'favorites#show'
+
+  post "/foodcategories", to: 'foodcategories#create'
+
+  resources :vendorscategories, only: [:create, :destroy]
+  resources :items, only: [:create, :destroy]
 
   # resources :favorites
 

@@ -7,9 +7,7 @@
 			 
 			  <%= f.submit "Add this vendor to your favorites!" %>
 		<% end %>
-    <% end %>
-	
-	
+    <% end %>	
 <% end %>
 
 <h2>Categories</h2>
@@ -27,8 +25,11 @@
 
 <div id= 'profpic'>
 	<h3>profile picture goes here</h3>
+		<img src= '<%= @vendor.avatar(:standard) %>' />
 </div>
 <br>
+
+
 
 <div> 
 	<h2>Menu</h2>
@@ -37,3 +38,7 @@
 	<% end %>
 </div>
 <br>
+<% if current_vendor %>
+	<%= link_to "Edit your information", edit_vendor_registration_path(@vendor) %>
+<% end %>
+<br><br>

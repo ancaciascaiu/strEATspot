@@ -16,6 +16,8 @@
                             <a href="/vendors/<%= vendor.id %>"><%= vendor.username %></a><br>
                         <% end %>
                     </div>
+                <% elsif vendor_signed_in? %>
+                    <div class="tab-pane fade in active" id="tab1default">Please log in as a customer to view your favorite strEATspot vendors!</div>
                 <% else %>
                     <div class="tab-pane fade in active" id="tab1default">Please log in to view your favorite strEATspot vendors!</div>
                 <% end %>
