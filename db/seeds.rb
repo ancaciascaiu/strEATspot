@@ -16,7 +16,7 @@ Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: 
 Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7")
 Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8")
 Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
-Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
+Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", avatar_file_name: "https://s3.amazonaws.com/streatspot/547289_3865881362953_1770701265_n.jpg?X-Amz-Date=20160928T201108Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=56e2134c9114efd00c75e7e6ef43500bbfe097d6b0652db5b1eae86cc15e93b3&X-Amz-Credential=ASIAJBL5YJ6QDU7ATMUQ/20160928/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEBkaDAfcwTlo9WwPU1QuhSL6AYqAWzM1FZPqeLXp%2BkSxuYqU3/mPcWJRm156KRUq6pE1ZbIkvJVuQ0yPM481UJ1FKRTe/UxmG91kbUXJjtPycoe8DvGW2748mU1ls4lH4k8WMWPRK9iudS3hQIDr2mQhO8mx%2BCPeq9B8mAQaqVDCE5nXRuuIimKwzCds/QKNTMT4aGFQ3jZGro0e6S3QFPhhQ2FeWpRNb9I92C1NaGrAPz/xZlZAKJNPh/IQz1C2KQ8Tio6522Dk52decbYvicPXZCUw2Pknr9ahE7qf%2BB0TRe2Lrf9sou/URiclBgRVSPEhwBcoehHxO6/lgiozUXtfSijppWXwsbZLwtAox8%2BvvwU%3D")
 
 Favorite.create(customer_id: 2, vendor_id: 1)
 Favorite.create(customer_id: 2, vendor_id: 3)
