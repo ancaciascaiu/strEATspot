@@ -125,3 +125,17 @@ var createMarker = function(marker){
     animation: google.maps.Animation.DROP
   })
 }
+
+var filterByFavorites = function(){
+
+}
+
+
+
+
+
+
+
+
+
+

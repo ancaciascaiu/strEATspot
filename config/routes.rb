@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   post "/favorites", to: 'favorites#create'
 
+  get "/favorites/locations/show", to: 'favorites#show'
+
   # resources :favorites
 
   # resources :customers

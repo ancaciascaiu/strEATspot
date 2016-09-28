@@ -1,8 +1,6 @@
 class LocationsController < ApplicationController
 
   def create
-    p '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    p params
     current_vendor.update(latitude: params[:lat])
     current_vendor.update(longitude: params[:lng])
     render(partial: "checked")
