@@ -5,7 +5,7 @@ class DeviseCreateVendors < ActiveRecord::Migration
       t.string :username, null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.attachment :avatar
+    
 
       ## Recoverable
       t.string   :reset_password_token
