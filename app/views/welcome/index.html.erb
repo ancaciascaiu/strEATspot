@@ -1,17 +1,17 @@
+<div class="content">
+	<div>
+		<% if !vendor_signed_in? && !customer_signed_in? %>
+			
+				<p>Please log in to see your profile and favorites</p>
+			
+		<% elsif vendor_signed_in? %>
+			<li><%= link_to "Edit your profile", edit_vendor_registration_path %></li>
+		<% end %>
+		
+	</div><br>
 
+
+	<div><%= render 'filter' %></div>
+
+	<%= render(partial: "map") %>
 <div>
-	<% if !vendor_signed_in? && !customer_signed_in? %>
-		
-			<p>Please log in to see your profile and favorites</p>
-		
-	<% elsif vendor_signed_in? %>
-		<li><%= link_to "Edit your profile", edit_vendor_registration_path %></li>
-	<% end %>
-	
-</div><br>
-
-<div>map</div><br>
-
-<div><%= render 'filter' %></div>
-
-<%= render(partial: "map") %>
