@@ -1,136 +1,134 @@
-<div>
-  <h2>Edit info for 
-    <% if current_vendor %><%= current_vendor.username %>
-    <% else %><%= current_customer.username %>
-    <% end %>
-  </h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
-
-
-
-  <% if current_vendor %>
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :profile_picture  %>
-        <%= f.file_field :avatar %>
-      </div>
-
-      <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.label :schedule %><br />
-        <%= f.text_area :schedule, autofocus: true %>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-    <br>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <em><%= @minimum_password_length %> characters minimum</em><br>
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-      <% end %>
-    </div>
-     <br>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-     <br>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(required to confirm changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-     <br>
-
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-  </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
-</div>
-<br>
-
-<% if current_vendor %>
-  <div>
-    <p>I am selling this food category:</p>
-    <% Foodcategory.all.each do |foodcategory| %>
-      <% if !current_vendor.foodcategories.include?(foodcategory) %>
-     
-        <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
-          <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-          <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-          <%= f.submit "#{foodcategory.name}" %>
+<div class="row" style="border:solid red 2px">
+    <div class="col-sm-6" style="border:solid blue 2px">
+      <h4>Edit info for 
+        <% if current_vendor %><%= current_vendor.username %>
+        <% else %><%= current_customer.username %>
         <% end %>
+      </h4>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+      <% if current_vendor %>
+        <div class="form-group">
+          <div class="field">
+            <%= f.label :upload_new_profile_picture  %>
+            <%= f.file_field :avatar %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, autofocus: true %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :schedule %><br />
+            <%= f.text_area :schedule, autofocus: true %>
+          </div>
+        <% end %>
+        <br>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <br>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <em><%= @minimum_password_length %> characters minimum</em><br>
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+            <br />
+          <% end %>
+        </div>
+         <br>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+         <br>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(required to confirm changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+         <br>
+
+        <div class="actions">
+          <%= f.submit "Update" %>
+        </div>
+      </div>
       <% end %>
-    <% end %>
+      <br>
+      <h4>Cancel my account</h4>
+
+      <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+      <%= link_to "Back", :back %>
     </div>
-    <div>
-      <p>I am no longer selling this:</p>
-      <% Foodcategory.all.each do |foodcategory| %>
-        <% if current_vendor.foodcategories.include?(foodcategory) %>
-          <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
-            <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-            <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-            <%= f.submit "#{foodcategory.name}" %>
+<br>
+  <div class="col-sm-6" style="border:solid yellow 2px">
+    <% if current_vendor %>
+      <div>
+        <p>I am selling this food category:</p>
+        <% Foodcategory.all.each do |foodcategory| %>
+          <% if !current_vendor.foodcategories.include?(foodcategory) %>
+         
+            <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
+              <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+              <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
+              <%= f.submit "#{foodcategory.name}" %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <div>
-    <%= form_for :foodcategory, url: foodcategories_path do |f| %>
-        <%= f.text_field :name %>
-        <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-        <%= f.submit "Add a new food category" %>
-    <% end %>
-    </div>
-<br>
-
-  <div>
-    <p>Your current menu:</p>
-    <% current_vendor.items.each do |item| %>
-        <%= item.title %> <%= item.description %> <%= item.price %>
-        <%= form_for :item, method: "delete", url: item_path(item) do |f| %>
-          <%= f.submit "Delete" %>
+        </div>
+        <div>
+          <p>I am no longer selling this:</p>
+          <% Foodcategory.all.each do |foodcategory| %>
+            <% if current_vendor.foodcategories.include?(foodcategory) %>
+              <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
+                <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+                <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
+                <%= f.submit "#{foodcategory.name}" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+        <%= form_for :foodcategory, url: foodcategories_path do |f| %>
+            <%= f.text_field :name %>
+            <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+            <%= f.submit "Add a new food category" %>
         <% end %>
-    <% end %>
+        </div>
+    <br>
 
-    <%= form_for :item, url: items_path do |f| %>
-        <%= f.text_field :title, placeholder: "title"%>
-        <%= f.text_field :description, placeholder: "description" %>
-        <%= f.text_field :price, placeholder: "price" %>
-        <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-        <%= f.submit "Add a new item" %>
-    <% end %>
+      <div>
+        <p>Your current menu:</p>
+        <% current_vendor.items.each do |item| %>
+            <%= item.title %> <%= item.description %> <%= item.price %>
+            <%= form_for :item, method: "delete", url: item_path(item) do |f| %>
+              <%= f.submit "Delete" %>
+            <% end %>
+        <% end %>
 
+        <%= form_for :item, url: items_path do |f| %>
+            <%= f.text_field :title, placeholder: "title"%>
+            <%= f.text_field :description, placeholder: "description" %>
+            <%= f.text_field :price, placeholder: "price" %>
+            <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+            <%= f.submit "Add a new item" %>
+        <% end %>
+
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-  <br>
-  <br>
+</div>
 
 
 
