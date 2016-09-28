@@ -5,10 +5,9 @@ class FoodcategoriesController < ApplicationController
 
   def create 
 	@foodcategory = Foodcategory.new(name: foodcategory_params[:name])
-	# @vendor = Vendor.find(foodcategory_params[:vendor_id])
 	if @foodcategory.save
 		Vendorscategory.create(vendor_id: foodcategory_params[:vendor_id], foodcategory_id: @foodcategory.id)
-		redirect_to "/vendors/#{foodcategory_params[:vendor_id]}"
+		redirect_to "/vendors/edit"
 	else
 		redirect_to '/welcome/index' #to be refactored
 	end

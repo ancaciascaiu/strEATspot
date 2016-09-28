@@ -34,7 +34,7 @@
 <div> 
 	<h2>Menu</h2>
 	<% @vendor.items.each do |item| %>
-		<p><%= item.title %>: <%= item.description %></p>
+		<p><%= item.title %>: <%= item.description %>- <%= item.price %></p>
 	<% end %>
 </div>
 <br>
