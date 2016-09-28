@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   post 'locations', to: 'locations#create'
   delete 'locations', to: 'locations#delete'
+  get 'locations', to: 'locations#get'
 
   post "/favorites", to: 'favorites#create'
 

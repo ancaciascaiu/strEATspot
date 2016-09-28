@@ -12,4 +12,8 @@ class LocationsController < ApplicationController
     render(partial: "uncheck")
   end
 
+  def get
+
+  end
+
 end

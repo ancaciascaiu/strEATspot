@@ -26,13 +26,15 @@
                     <% Foodcategory.all.each do |category| %>
                         <%= link_to "#{category.name}", foodcategories_show_path(category) %><br>
                     <% end %>
-                    <%= link_to "Filter Favorites", location_favorites_path %>
+                    <%= link_to "Filter Favorites", favorites_locations_show_path %>
                 </div>
 
                 <div class="tab-pane fade" id="tab3default">
-                    <a>0.5 miles</a><br>
-                    <a>1.0 miles</a><br>
-                    <a>1.5 miles</a><br>
+                  <div id="slider-div">
+                    <form id="radius-form" method="get" action="/locations/set_radius">
+                      <input id="slider" type="range" min="500" max="3000">Select Radius (max 3km)</input>
+                      <input class="move-right" type="submit" value="Update Map" /></form>
+                    </div>
                 </div>
 
             </div>

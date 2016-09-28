@@ -30,4 +30,11 @@ $(document).ready(function(){
       })
     };
   });
+  // AJAX for updating circle radius
+  $("#radius-form").on('submit', function(event){
+    event.preventDefault();
+    var radiusString = $(this).children('#slider').val();
+    radius = parseInt(radiusString);
+    initMap();
+  });
 });

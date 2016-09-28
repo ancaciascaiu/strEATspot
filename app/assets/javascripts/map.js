@@ -45,8 +45,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: Your browser doesn\'t support geolocation.');
 };
 var map;
+var circle;
+var radius = 1500;
 // Initialize map
-function initMap(markers) {
+function initMap() {
 
 // Creates a new map instance
   map = new google.maps.Map(document.getElementById('map'), {
@@ -55,10 +57,10 @@ function initMap(markers) {
   });
 
   // Creates the circle
-  var circle = new google.maps.Circle({
+  circle = new google.maps.Circle({
     center: map.center,
     map: map,
-    radius: 1500, // ~1 MILE IN METERS.
+    radius: radius, // ~1 MILE IN METERS.
     fillColor: '#FF6600',
     fillOpacity: 0.3,
     strokeColor: "#FFF",
@@ -97,8 +99,15 @@ var createMarkers = function(markers, userPosition, circle){
   }
 };
 
+// Removes markers from map
+var clearMarkers = function() {
+  setMapOnAll(null);
+}
+
+// Gets the location of a vendor on button click
 var getVendorLocation = function(){
   var deferred = new $.Deferred();
+  // Triggers if gps gives permission
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -106,6 +115,7 @@ var getVendorLocation = function(){
         lng: position.coords.longitude
       };
       deferred.resolve(pos);
+      // Throws error if permission is denied
     }), function() {
       handleLocationError(true, infoWindow, map.getCenter());
     };
