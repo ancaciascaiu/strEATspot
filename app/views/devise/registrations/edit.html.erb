@@ -69,36 +69,40 @@
   <%= link_to "Back", :back %>
 </div>
 <br>
+
 <% if current_vendor %>
   <div>
-    <p>Existing food categories:</p>
+    <p>I am selling this food category:</p>
     <% Foodcategory.all.each do |foodcategory| %>
-      <div>
-        <%= foodcategory.name %> 
-        <% if !current_vendor.foodcategories.include?(foodcategory) %>
-          <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
-            <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-            <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-            <%= f.submit "I'm selling this!" %>
-          <% end %>
-
-        <% else %>
-          
+      <% if !current_vendor.foodcategories.include?(foodcategory) %>
+     
+        <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
+          <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+          <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
+          <%= f.submit "#{foodcategory.name}" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div>
+    <div>
+      <p>I am no longer selling this:</p>
+      <% Foodcategory.all.each do |foodcategory| %>
+        <% if current_vendor.foodcategories.include?(foodcategory) %>
           <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
             <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
             <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-            <%= f.submit "hmmm... NOT" %>
+            <%= f.submit "#{foodcategory.name}" %>
           <% end %>
         <% end %>
-      </div>
-    <% end %>
-
+      <% end %>
+    </div>
+    <div>
     <%= form_for :foodcategory, url: foodcategories_path do |f| %>
         <%= f.text_field :name %>
         <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
         <%= f.submit "Add a new food category" %>
     <% end %>
-  </div>
+    </div>
 <br>
 
   <div>
