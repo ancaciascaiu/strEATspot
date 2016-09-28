@@ -1,44 +1,45 @@
-<h1><%= @vendor.username %></h1>
-<% if current_customer %>
-	<% if !current_customer.vendors.include?(@vendor) %>
-		<%= form_for :favorite, url: favorites_path do |f| %>
-			  <%= f.hidden_field(:vendor_id, :value => @vendor.id) %>
-			  <%= f.hidden_field(:customer_id, :value => current_customer.id) %>
-			 
-			  <%= f.submit "Add this vendor to your favorites!" %>
-		<% end %>
-    <% end %>	
-<% end %>
-
-<h2>Categories</h2>
-<% @vendor.foodcategories.each do |category|  %>
-	<%= category.name %><br>
-	<!-- link to each cateogry show page when clicked on -->
-<% end %>
-																																							
-
-<div id='schedule'> 
-	<h2>Schedule</h2>
-	<%= @vendor.schedule %>
-</div>
-<br>
-
-<div id= 'profpic'>
-	<h3>profile picture goes here</h3>
+<div class="row" style="border:solid red 2px">
+	<div id= 'profpic' class="col-sm-6">
+		<h2><%= @vendor.username %></h2>
 		<img src= '<%= @vendor.avatar(:standard) %>' />
+	</div>
+
+	<div class="col-sm-6">
+		<% if current_customer %>
+			<% if !current_customer.vendors.include?(@vendor) %>
+				<%= form_for :favorite, url: favorites_path do |f| %>
+					  <%= f.hidden_field(:vendor_id, :value => @vendor.id) %>
+					  <%= f.hidden_field(:customer_id, :value => current_customer.id) %>
+					 
+					  <%= f.submit "Add this vendor to your favorites!" %>
+				<% end %>
+		    <% end %>	
+		<% end %>
+
+		<div id='schedule'> 
+			<h4>Schedule</h4>
+			<%= @vendor.schedule %>
+		</div>
+		<br>
+
+		<h4>Categories</h4>
+		<% @vendor.foodcategories.each do |category|  %>
+			<%= category.name %><br>
+			<!-- link to each cateogry show page when clicked on -->
+		<% end %>
+																																									
+
+
+		<div> 
+			<h4>Menu</h4>
+			<% @vendor.items.each do |item| %>
+				<p><%= item.title %>: <%= item.description %>- $<%= item.price %></p>
+			<% end %>
+		</div>
+		<br>
+		<% if current_vendor %>
+			<%= link_to "Edit your information", edit_vendor_registration_path(@vendor) %>
+		<% end %>
+		<br><br>
+	</div>
 </div>
-<br>
-
-
-
-<div> 
-	<h2>Menu</h2>
-	<% @vendor.items.each do |item| %>
-		<p><%= item.title %>: <%= item.description %>- <%= item.price %></p>
-	<% end %>
-</div>
-<br>
-<% if current_vendor %>
-	<%= link_to "Edit your information", edit_vendor_registration_path(@vendor) %>
-<% end %>
-<br><br>
