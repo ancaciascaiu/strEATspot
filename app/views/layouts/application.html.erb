@@ -2,46 +2,57 @@
 <html>
 <head>
   <title>StrEATspot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'Home', root_path %><span class="sr-only">(current)</span></li>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left">
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <% if customer_signed_in? %>
+              <li><%= link_to "Edit your profile", edit_customer_registration_path %></li>
+              <li><%= link_to 'Log out', destroy_customer_session_path, method: :delete %></li>
+          <% elsif vendor_signed_in? %>
+              <li><%= link_to "My profile page", vendor_path(current_vendor) %></li>
+              <li><%= link_to 'Log out', destroy_vendor_session_path, method: :delete %></li>
+          <% else %>
+              <li><%= link_to 'Customers Log In', new_customer_session_path %></li>
+              <li><%= link_to 'Customers Sign Up', new_customer_registration_path %></li>
+              <li><%= link_to 'Vendors Log In', new_vendor_session_path %></li>
+              <li><%= link_to 'Vendors Sign Up', new_vendor_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+	<!-- <nav class="navbar navbar-inverse">
 	  <div class="container">
 	    <div id="navbar">
 	      <ul class="nav navbar-nav">
-	        <li><%= link_to 'Home', root_path %></li>
+	        <li></li>
 	      </ul>
 	      <ul class="nav navbar-nav pull-right">
 
-	        <% if customer_signed_in? %>
-	          <li>
-		            <ul>
-		              <li><%= link_to "Edit your profile", edit_customer_registration_path %></li>
-		              <li><%= link_to 'Log out', destroy_customer_session_path, method: :delete %></li>
-		            </ul>
-	          </li>
-
-	        <% elsif vendor_signed_in? %>
-	        	<li>
-<p>Hi</p>
-		            <ul>
-		              <li><%= link_to "My profile page", vendor_path(current_vendor) %></li>
-		              <li><%= link_to 'Log out', destroy_vendor_session_path, method: :delete %></li>
-		            </ul>
-		        </li>
-
-	        <% else %>
-		        <div>
-		          <li><%= link_to 'Customers Log In', new_customer_session_path %></li>
-		          <li><%= link_to 'Customers Sign Up', new_customer_registration_path %></li>
-		        </div>
-		        <div>
-		          <li><%= link_to 'Vendors Log In', new_vendor_session_path %></li>
-		          <li><%= link_to 'Vendors Sign Up', new_vendor_registration_path %></li>
-		        </div>
-	        <% end %>
 	      </ul>
 	    </div>
 	  </div>
@@ -52,7 +63,7 @@
 	      <%= value %>
 	    </div>
 	  <% end %>
-	</div>
+	</div> -->
 	<%= yield %>
 </body>
 </html>
