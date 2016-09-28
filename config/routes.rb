@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 
   post 'locations', to: 'locations#create'
   delete 'locations', to: 'locations#delete'
+
+  post "/favorites", to: 'favorites#create'
+
+  # resources :favorites
+
   # resources :customers
 
   # Example of regular route:

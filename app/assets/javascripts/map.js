@@ -117,11 +117,11 @@ var getVendorLocation = function(){
 };
 
 var createMarker = function(marker){
-  // var image = './dooftruck.png';
+  var image = './dooftruck.png';
   new google.maps.Marker({
     position: marker,
     map: map,
-    // icon: image,
+    icon: image,
     animation: google.maps.Animation.DROP
   })
 }

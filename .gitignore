@@ -17,4 +17,4 @@
 /tmp
 
 # Ignore API file
-/app/assets/javascripts/api.js
+/config/maps.yml
