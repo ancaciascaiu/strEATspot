@@ -5,7 +5,6 @@ class DeviseCreateVendors < ActiveRecord::Migration
       t.string :username, null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-    
 
       ## Recoverable
       t.string   :reset_password_token
@@ -39,7 +38,7 @@ class DeviseCreateVendors < ActiveRecord::Migration
       # t.attachment :profile_picture
 
       ## GPS keys
-      t.float :latitude 
+      t.float :latitude
       t.float :longitude
 
       t.timestamps null: false

@@ -9,8 +9,7 @@ class VendorscategoriesController < ApplicationController
   def create 
 	@vendorscategory = Vendorscategory.new(vendorscategory_params)
 	if @vendorscategory.save
-		Vendorscategory.create(vendorscategory_params)
-		redirect_to "/vendors/#{vendorscategory_params[:vendor_id]}"
+		redirect_to "/vendors/edit"
 	else
 		redirect_to '/welcome/index'
 	end
