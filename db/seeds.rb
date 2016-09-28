@@ -15,7 +15,7 @@ Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com
 Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "banana", schedule: "T-F 9-3, S,S 9-10")
 Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7")
 Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8")
-Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
+Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", avatar_file_name: "")
 Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5")
 
 Favorite.create(customer_id: 2, vendor_id: 1)
