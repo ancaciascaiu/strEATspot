@@ -1,0 +1,8 @@
+development:
+  google_api_key: AIzaSyB4CEiXTwjIBPixJVQ45g7gAQaJFCGpZJg
+
+test:
+  google_api_key: AIzaSyB4CEiXTwjIBPixJVQ45g7gAQaJFCGpZJg
+
+production:
+  google_api_key: <%= ENV["GOOGLE_API_KEY"] %>

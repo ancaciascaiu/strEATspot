@@ -7,7 +7,7 @@ class VendorsController < ApplicationController
 private
 
   def vendor_params
-    params.require(:vendor).permit(:profile_picture)
+    params.require(:vendor).permit(:avatar)
   end
 
 end

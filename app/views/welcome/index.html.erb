@@ -1,15 +1,28 @@
+<div class="row" style="border:solid red 2px">
+	<div class="col-sm-6" style="border:solid blue 2px">
+		<% if !vendor_signed_in? && !customer_signed_in? %>
+			
+				<p>Please log in to see your profile and favorites</p>
+			
+		<% elsif vendor_signed_in? %>
+			<li><%= link_to "Edit your profile", edit_vendor_registration_path %></li>
+			<p>Please log in to see your profile and favorites</p>
+			<p>Please log in to see your profile and favorites</p>
+			<p>Please log in to see your profile and favorites</p>
+			<p>Please log in to see your profile and favorites</p>
+		<% end %>	
+	</div><br>
 
+	<div class="col-sm-6" style="border:solid yellow 2px">
+		<div class="row">
+			<div class="col-sm-12">
+				<%= render(partial: "map") %>
+			</div>
+		</div><br>
+		<div class="row">
+			<div class="col-sm-12">
+				<div><%= render 'filter' %></div>
+			</div>
+		</div>
+	</div>
 <div>
-	<% if customer_signed_in? %>
-		<p>Active favorites:</p>
-		<p>!!!Show only active favorites!!!</p>
-	<% else %>
-		<p>Please LOG IN to view your favorites!</p>
-	<% end %>
-</div><br>
-
-<div>map</div><br>
-
-<div><%= render 'filter' %></div>
-
-<%= render(partial: "map") %>
