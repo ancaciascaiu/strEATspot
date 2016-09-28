@@ -4,3 +4,4 @@
 <% @category.vendors.each do |vendor| %>
 	 <a href="/vendors/<%= vendor.id %>"><%= vendor.username %></a><br>
 <% end %>
+<%= render(partial: "map") %>

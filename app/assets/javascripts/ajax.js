@@ -51,7 +51,22 @@ $(document).ready(function(){
       markerArray = response;
       initMap();
     })
+  });
+  // AJAX for grabbing by category
+  $('#category-form').on('submit', function(event){
+    event.preventDefault();
+    $form = $(this)
+
+    var request = $.ajax({
+      url: $form.attr('action'),
+      method: $form.attr('method'),
+      data: $form.serialize()
+    });
+
+    request.done(function(response){
+      markerArray = response;
+      initMap();
+    });
   })
 });
-
 

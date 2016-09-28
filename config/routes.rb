@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "/favorites/locations/show", to: 'favorites#show'
 
   post "/foodcategories", to: 'foodcategories#create'
+  get "/foodcategories/category/:id", to: 'foodcategories#filter'
 
   resources :vendorscategories, only: [:create, :destroy]
   resources :items, only: [:create, :destroy]

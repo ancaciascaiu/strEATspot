@@ -16,9 +16,7 @@ class FavoritesController < ApplicationController
         favorites << vendor
       end
     end
-    p favorites
     locations = favorites.map{ |vendor| {title: vendor.username, coords: {lat: vendor.latitude, lng: vendor.longitude}} }
-    p locations
     render :json => locations
   end
 
@@ -28,4 +26,3 @@ class FavoritesController < ApplicationController
     params.require(:favorite).permit(:vendor_id, :customer_id)
   end
 end
-# {title: "Tory's Tortillas", lat: 41.878600, lng: -87.644003}

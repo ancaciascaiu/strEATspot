@@ -132,11 +132,7 @@ var createMarker = function(markerTitle, marker){
     title: marker.title,
     animation: google.maps.Animation.DROP
   })
-}
-
-var filterByFavorites = function(){
-
-}
+};
 
 
 

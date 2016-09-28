@@ -29,6 +29,10 @@
                     <% Foodcategory.all.each do |category| %>
                         <%= link_to "#{category.name}", foodcategories_show_path(category) %><br>
                     <% end %>
+                    <form class="move-right" id="category-form" method="get" action="/foodcategories/category/:id">
+                    <%= collection_select(:customer, :category_id, Foodcategory.all, :id, :name, prompt: true) %>
+                    <input type="submit" value="Filter Map by Category"/>
+                  </form>
                 </div>
 
                 <div class="tab-pane fade" id="tab3default">
