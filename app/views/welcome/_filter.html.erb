@@ -1,35 +1,40 @@
 <div class="row">
-<div id="mediaz">
-    <div class="panel with-nav-tabs panel-default">
-        <div class="panel-heading">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1default" data-toggle="tab">Favorites</a></li>
-                <li><a href="#tab2default" data-toggle="tab">Categories</a></li>
-                <li><a href="#tab3default" data-toggle="tab">Radius</a></li>
-            </ul>
-        </div>
-        <div class="panel-body">
-            <div class="tab-content">
+    <div style="width:440px">
+        <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1default" data-toggle="tab">Favorites</a></li>
+                    <li><a href="#tab2default" data-toggle="tab">Categories</a></li>
+                    <li><a href="#tab3default" data-toggle="tab">Radius</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
 
-                <% if customer_signed_in? %>
-                    <div class="tab-pane fade in active" id="tab1default">
-                      <% current_customer.vendors.each do |vendor| %>
-                            <a href="/vendors/<%= vendor.id %>"><%= vendor.username %></a><br>
-                        <% end %>
-                      <form id="favorites-form" method="get" action="/favorites/locations/show">
-                        <input class="move-right" type="submit" value="Filter Favorites" />
-                      </form>
-                    </div>
-                <% elsif vendor_signed_in? %>
-                    <div class="tab-pane fade in active" id="tab1default">Please log in as a customer to view your favorite strEATspot vendors!</div>
-                <% else %>
-                    <div class="tab-pane fade in active" id="tab1default">Please log in to view your favorite strEATspot vendors!</div>
-                <% end %>
-
-                <div class="tab-pane fade" id="tab2default">
-                    <% Foodcategory.all.each do |category| %>
-                        <%= link_to "#{category.name}", foodcategories_show_path(category) %><br>
+                    <% if customer_signed_in? %>
+                        <div class="tab-pane fade in active" id="tab1default">
+                          <% current_customer.vendors.each do |vendor| %>
+                                <a href="/vendors/<%= vendor.id %>"><%= vendor.username %></a><br>
+                            <% end %>
+                          <form id="favorites-form" method="get" action="/favorites/locations/show">
+                            <input class="move-right" type="submit" value="Filter Favorites" />
+                          </form>
+                        </div>
+                    <% elsif vendor_signed_in? %>
+                        <div class="tab-pane fade in active" id="tab1default">Please log in as a customer to view your favorite strEATspot vendors!</div>
+                    <% else %>
+                        <div class="tab-pane fade in active" id="tab1default">Please log in to view your favorite strEATspot vendors!</div>
                     <% end %>
+
+
+
+
+                    <div class="tab-pane fade" id="tab2default">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <% Foodcategory.all.each do |category| %>
+                                    <%= link_to "#{category.name}", foodcategories_show_path(category) %><br>
+                                <% end %>
                             </div>
                             <div class="col-sm-6">
                                 <form  method="get" action="/foodcategories/category/:id">
@@ -44,13 +49,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
                     <div class="tab-pane fade" id="tab3default">
                       <div id="slider-div">
                         <form id="radius-form" method="get" action="/locations/set_radius">
@@ -67,5 +65,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
