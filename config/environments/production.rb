@@ -101,6 +101,4 @@ Rails.application.configure do
     }
   }
 
-  config.
-
 end
