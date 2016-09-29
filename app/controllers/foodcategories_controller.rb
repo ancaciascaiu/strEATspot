@@ -31,3 +31,4 @@ class FoodcategoriesController < ApplicationController
   end
 
 end
+end
