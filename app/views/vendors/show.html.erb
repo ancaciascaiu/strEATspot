@@ -10,13 +10,13 @@
 				<%= form_for :favorite, url: favorites_path do |f| %>
 					  <%= f.hidden_field(:vendor_id, :value => @vendor.id) %>
 					  <%= f.hidden_field(:customer_id, :value => current_customer.id) %>
-					 
+
 					  <%= f.submit "Add this vendor to your favorites!" %>
 				<% end %>
-		    <% end %>	
+		    <% end %>
 		<% end %>
 
-		<div id='schedule'> 
+		<div id='schedule'>
 			<h4>Schedule</h4>
 			<%= @vendor.schedule %>
 		</div>
@@ -27,17 +27,17 @@
 			<%= category.name %><br>
 			<!-- link to each cateogry show page when clicked on -->
 		<% end %>
-																																									
 
 
-		<div> 
+
+		<div>
 			<h4>Menu</h4>
 			<% @vendor.items.each do |item| %>
 				<p><%= item.title %>: <%= item.description %>  $<%= item.price %></p>
 			<% end %>
 		</div>
 		<br>
-		<% if current_vendor %>
+		<% if current_vendor.id == params[:id].to_i  %>
 			<%= link_to "Edit your information", edit_vendor_registration_path(@vendor) %>
 		<% end %>
 		<br><br>
