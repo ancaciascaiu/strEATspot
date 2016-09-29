@@ -1,5 +1,5 @@
-<div class="row" style="border:solid red 2px">
-    <div class="col-sm-6" style="border:solid blue 2px">
+<div class="row">
+    <div class="col-sm-6">
       <h4>Edit info for 
         <% if current_vendor %><%= current_vendor.username %>
         <% else %><%= current_customer.username %>
@@ -18,7 +18,7 @@
           <br>
           <div class="field">
             <%= f.label :username %><br />
-            <%= f.text_field :username, autofocus: true %>
+            <%= f.text_area :username, autofocus: true %>
           </div>
           <br>
           <div class="field">
@@ -60,48 +60,46 @@
          <br>
 
         <div class="actions">
-          <%= f.submit "Update" %>
+          <%= f.submit "Update" , :class => "item button-to-link"%>
         </div>
       </div>
       <% end %>
       <br>
       <h4>Cancel my account</h4>
 
-      <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , :class => "item button-to-link"%></p>
 
-      <%= link_to "Back", :back %>
+      <%= link_to "Back", :back , style:"padding-left: 5px"%>
     </div>
 <br>
 
-
-
-  <div class="col-sm-6" style="border:solid yellow 2px">
+  <div class="col-sm-6">
     <% if current_vendor %>
      <div class="row"> 
       <div class="col-sm-6">
-        <p>I want to sell this food category:</p>
+        <h4>I want to sell this food category:</h4>
           <ul>
             <% Foodcategory.all.each do |foodcategory| %>
               <% if !current_vendor.foodcategories.include?(foodcategory) %>
 
-                <li><%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
+                <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
                   <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
                   <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-                  <%= f.submit "#{foodcategory.name}" %>
-                <% end %></li>
+                  <%= f.submit "#{foodcategory.name}" , :class => "item button-to-link"%>
+                <% end %>
               <% end %>
             <% end %>
           </ul>
       </div>
 
       <div class="col-sm_6">
-        <p>I am no longer selling this:</p>
+        <h4>I am no longer selling this:</h4>
         <% Foodcategory.all.each do |foodcategory| %>
           <% if current_vendor.foodcategories.include?(foodcategory) %>
             <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
               <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
               <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-              <%= f.submit "#{foodcategory.name}" %>
+              <%= f.submit "#{foodcategory.name}" , :class => "item button-to-link"%>
             <% end %>
           <% end %>
         <% end %>
@@ -112,38 +110,38 @@
         <%= form_for :foodcategory, url: foodcategories_path do |f| %>
             <%= f.text_field :name %>
             <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-            <%= f.submit "Add a new food category" %>
+            <%= f.submit "Add a new food category" , :class => "item button-to-link"%>
         <% end %>
         </div>
-    <br>
+    <br><br>
 
       <div>
-        <p>Your current menu:</p>
+        <h4>Your current menu:</h4>
+
         <% current_vendor.items.each do |item| %>
           <div>
+            <div class="item">
             <%= item.title %>: <%= item.description %>  $<%= item.price %>
+            </div>
             <%= form_for :item, method: "delete", url: item_path(item) do |f| %>
-              <%= f.submit "Delete" %>
+              <%= f.submit "Delete" , :class => "item button-to-link"%>
             <% end %>
           </div>
         <% end %>
 
         <%= form_for :item, url: items_path do |f| %>
             <%= f.text_field :title, placeholder: "title"%>
-            <%= f.text_field :description, placeholder: "description" %>
+            <%= f.text_field :description, placeholder: "description"%>
             <%= f.text_field :price, placeholder: "price" %>
             <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-            <%= f.submit "Add a new item" %>
+            <%= f.submit "Add a new item" , :class => "item button-to-link"%>
         <% end %>
 
       </div>
     <% end %>
   </div>
 </div>
-
-
-
-
+<br>
 
 
 

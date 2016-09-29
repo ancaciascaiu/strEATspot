@@ -31,7 +31,7 @@
                     <% end %>
                     <form class="move-right" id="category-form" method="get" action="/foodcategories/category/:id">
                     <%= collection_select(:customer, :category_id, Foodcategory.all, :id, :name, prompt: true) %>
-                    <input type="submit" value="Filter Map by Category"/>
+                    <input class="move-right button-to-link" type="submit" value="Filter Map by Category"/>
                   </form>
                 </div>
 
@@ -39,14 +39,14 @@
                   <div id="slider-div">
                     <form id="radius-form" method="get" action="/locations/set_radius">
                       <input id="slider" type="range" min="500" max="3000">Select Radius (max 3km)</input>
-                      <input class="move-right" type="submit" value="Update Map" /></form>
+                      <input class="move-right button-to-link" type="submit" value="Update Map" /></form>
                     </div>
                 </div>
 
             </div>
         </div>
-  <form id="actives-form" method="get" action="/locations">
-    <input type="submit" value="Display All Active Vendors" />
+  <form class="item button-to-link" id="actives-form" method="get" action="/locations">
+    <input class="item button-to-link" type="submit" value="Display All Active Vendors" />
   </form>
     </div>
 </div>
