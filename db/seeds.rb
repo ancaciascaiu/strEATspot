@@ -7,19 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #passwords are "hungry"/"sohungry"
-Customer.create(username: "Alex", email: "alex@hungry.com", password: "hungry")
-Customer.create(username: "Michelle", email: "michelle@sohungry.com", password: "sohungry")
+Customer.create(username: "Alex", email: "alex@hungry.com", password: "password")
+Customer.create(username: "Michelle", email: "michelle@sohungry.com", password: "password")
 
 #all passwords are banana:
-Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", password: "banana", schedule: "M-F 8-3, S,S 10-10", latitude: 41.878674, longitude: -87.640333)
-Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "banana", schedule: "T-F 9-3, S,S 9-10", latitude: 41.878274, longitude: -87.640330)
-Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "banana", schedule: "M-F 10-6, S,S 8-7", latitude: 41.878644, longitude: -87.640303)
-Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "banana", schedule: "T-F 8-5, S,S 9-8", latitude: 41.873674, longitude: -87.640033)
-Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.878670, longitude: -87.620333)
-Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "banana", schedule: "W-F 11-8, S,S 9-5", latitude: 41.858674, longitude: -87.640000)
-Vendor.create(username: "My Taco Truck", email: "taco@truck.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878994, longitude: -87.649533)
-Vendor.create(username: "West's East Side, Boat Side Smoothies", email: "west@smoothies.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.778674, longitude: -87.540333)
-Vendor.create(username: "Tory's Tortillas", email: "tory@tortillas.com", password: "banana", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878600, longitude: -87.644003)
+Vendor.create(username:  "Avnerosmith's Banana Blitz", email:  "banana@blitz.com", password: "password", schedule: "M-F 8-3, S,S 10-10", latitude: 41.878674, longitude: -87.640333)
+Vendor.create(username:  "The Baker Brats", email: "matt@brat.wurst", password: "password", schedule: "T-F 9-3, S,S 9-10", latitude: 41.878274, longitude: -87.640330)
+Vendor.create(username:  "3 Duke's Greene's", email:  "duke@greene.ss", password: "password", schedule: "M-F 10-6, S,S 8-7", latitude: 41.878644, longitude: -87.640303)
+Vendor.create(username:  "Pete's Pristine Perfect Pineapple Pizza", email:  "pete@perfect.pz", password: "password", schedule: "T-F 8-5, S,S 9-8", latitude: 41.873674, longitude: -87.640033)
+Vendor.create(username:  "Ellie's Deli", email: "ellie@deli.com", password: "password", schedule: "W-F 11-8, S,S 9-5", latitude: 41.878670, longitude: -87.620333)
+Vendor.create(username:  "Alycit Confec-ssions", email: "alyssa@confess.com", password: "password", schedule: "W-F 11-8, S,S 9-5", latitude: 41.858674, longitude: -87.640000)
+Vendor.create(username: "My Taco Truck", email: "taco@truck.com", password: "password", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878994, longitude: -87.649533)
+Vendor.create(username: "West's East Side, Boat Side Smoothies", email: "west@smoothies.com", password: "password", schedule: "W-F 8-5, S,S 11-4", latitude: 41.778674, longitude: -87.540333)
+Vendor.create(username: "Tory's Tortillas", email: "tory@tortillas.com", password: "password", schedule: "W-F 8-5, S,S 11-4", latitude: 41.878600, longitude: -87.644003)
 
 Favorite.create(customer_id: 2, vendor_id: 1)
 Favorite.create(customer_id: 2, vendor_id: 3)
@@ -126,14 +126,3 @@ Item.create(title: "Cupcakes", description: "very delicious", price: 4, vendor_i
 Item.create(title: "Cookies", description: "ask the vendor", price: 2, vendor_id: 6)
 Item.create(title: "Donuts", description: "Long Johns, Infused, Confused, Refused", price: 3.5, vendor_id: 6)
 Item.create(title: "Icecream", description: "Vanilla only", price: 3.5, vendor_id: 6)
-
-
-
-
-
-
-
-
-
-
-
