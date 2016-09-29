@@ -7,6 +7,13 @@
 }
 
 #actives-form {
-  margin: 15px;
   vertical-align: bottom;
+}
+
+.filter-buttons {
+  margin-top: 10px;
+}
+
+.category-filters {
+  margin-top: 10px;
 }
