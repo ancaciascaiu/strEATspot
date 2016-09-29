@@ -4,7 +4,7 @@ class FoodcategoriesController < ApplicationController
   end
 
   def create
-  @foodcategory = Foodcategory.new(name: foodcategory_params[:name])
+    @foodcategory = Foodcategory.new(name: foodcategory_params[:name])
   if @foodcategory.save
     Vendorscategory.create(vendor_id: foodcategory_params[:vendor_id], foodcategory_id: @foodcategory.id)
     redirect_to "/vendors/edit"
@@ -29,4 +29,5 @@ class FoodcategoriesController < ApplicationController
     params.require(:foodcategory).permit(:name, :vendor_id)
   end
 
+end
 end
