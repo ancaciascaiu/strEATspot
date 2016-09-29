@@ -128,7 +128,7 @@ var getVendorLocation = function(){
 };
 
 var createMarker = function(markerTitle, marker){
-  var image = './marker.png';
+  var image = '/marker.png';
   new google.maps.Marker({
     position: marker.coords,
     map: map,
