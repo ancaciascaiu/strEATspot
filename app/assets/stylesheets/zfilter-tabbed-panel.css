@@ -1,4 +1,17 @@
 
+.button-to-link{
+  background: none;
+  border: none;
+  color: #2A5DB0;
+  /*text-decoration: underline;*/
+  
+}
+
+.button-to-link:hover {
+    text-decoration: underline;
+   
+}
+
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
 }
