@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'items/create'
 
   get 'items/destroy'
@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   root 'welcome#index'
+
   get 'welcome/index'
-  
+
   devise_for :vendors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,14 +22,22 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
+  post 'locations', to: 'locations#create'
+  delete 'locations', to: 'locations#delete'
+  get 'locations', to: 'locations#get'
+
   post "/favorites", to: 'favorites#create'
 
+  get "/favorites/locations/show", to: 'favorites#show'
+
   post "/foodcategories", to: 'foodcategories#create'
+  get "/foodcategories/category/:id", to: 'foodcategories#filter'
 
   resources :vendorscategories, only: [:create, :destroy]
   resources :items, only: [:create, :destroy]
 
   # resources :favorites
+
   # resources :customers
 
   # Example of regular route:

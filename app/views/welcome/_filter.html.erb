@@ -9,12 +9,15 @@
         </div>
         <div class="panel-body">
             <div class="tab-content">
-                
+
                 <% if customer_signed_in? %>
                     <div class="tab-pane fade in active" id="tab1default">
-                        <% current_customer.vendors.each do |vendor| %>
+                      <% current_customer.vendors.each do |vendor| %>
                             <a href="/vendors/<%= vendor.id %>"><%= vendor.username %></a><br>
                         <% end %>
+                      <form id="favorites-form" method="get" action="/favorites/locations/show">
+                        <input class="move-right" type="submit" value="Filter Favorites" />
+                      </form>
                     </div>
                 <% elsif vendor_signed_in? %>
                     <div class="tab-pane fade in active" id="tab1default">Please log in as a customer to view your favorite strEATspot vendors!</div>
@@ -26,15 +29,24 @@
                     <% Foodcategory.all.each do |category| %>
                         <%= link_to "#{category.name}", foodcategories_show_path(category) %><br>
                     <% end %>
+                    <form class="move-right" id="category-form" method="get" action="/foodcategories/category/:id">
+                    <%= collection_select(:customer, :category_id, Foodcategory.all, :id, :name, prompt: true) %>
+                    <input type="submit" value="Filter Map by Category"/>
+                  </form>
                 </div>
 
                 <div class="tab-pane fade" id="tab3default">
-                    <a>0.5 miles</a><br>
-                    <a>1.0 miles</a><br>
-                    <a>1.5 miles</a><br>
+                  <div id="slider-div">
+                    <form id="radius-form" method="get" action="/locations/set_radius">
+                      <input id="slider" type="range" min="500" max="3000">Select Radius (max 3km)</input>
+                      <input class="move-right" type="submit" value="Update Map" /></form>
+                    </div>
                 </div>
-                
+
             </div>
         </div>
+  <form id="actives-form" method="get" action="/locations">
+    <input type="submit" value="Display All Active Vendors" />
+  </form>
     </div>
 </div>

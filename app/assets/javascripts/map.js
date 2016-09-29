@@ -3,19 +3,6 @@ var rad = function(x) {
   return x * Math.PI / 180;
 };
 
-// Store all locations
-var markerArray = [
-  {lat: 41.878674, lng: -87.640333},
-  {lat: 41.878274, lng: -87.640330},
-  {lat: 41.878644, lng: -87.640303},
-  {lat: 41.873674, lng: -87.640033},
-  {lat: 41.878670, lng: -87.620333},
-  {lat: 41.858674, lng: -87.640000},
-  {lat: 41.878994, lng: -87.649533},
-  {lat: 41.778674, lng: -87.540333},
-  {lat: 41.878600, lng: -87.644003}
-];
-
 // Gets distance between two coordinates
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
@@ -44,9 +31,30 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
 };
+
+var getActiveVendors = function(){
+  var request = $.ajax({
+    url: '/locations',
+    method: "GET"
+  });
+
+  request.done(function(response){
+    console.log(response);
+    markerArray = response;
+  });
+};
+
+// Store all locations
+var markerArray = [];
+
 var map;
+
+var radius = 1500;
+
 // Initialize map
-function initMap(markers) {
+function initMap() {
+
+  getActiveVendors();
 
 // Creates a new map instance
   map = new google.maps.Map(document.getElementById('map'), {
@@ -58,7 +66,7 @@ function initMap(markers) {
   var circle = new google.maps.Circle({
     center: map.center,
     map: map,
-    radius: 1500, // ~1 MILE IN METERS.
+    radius: radius, // ~1 MILE IN METERS.
     fillColor: '#FF6600',
     fillOpacity: 0.3,
     strokeColor: "#FFF",
@@ -73,39 +81,69 @@ function initMap(markers) {
         lng: position.coords.longitude
       };
       var userCoords = new google.maps.LatLng(pos.lat, pos.lng);
-      console.log(pos);
-      circle.center = userCoords;
+      circle.setCenter = userCoords;
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  // Sets radius and filters by customer location
   var customerPosition = new google.maps.LatLng(circle.center.lat(), circle.center.lng());
-  console.log(circle.center.lat());
   createMarkers(markerArray, customerPosition, circle);
 };
 
 var createMarkers = function(markers, userPosition, circle){
-  var image = './dooftruck.png';
-    console.log(userPosition);
-    console.log(circle.radius);
-
 // Iterates through all stored map markers
   for(var i = 0; i < markers.length; i++){
-    var newMarkerCoordinates = new google.maps.LatLng(markers[i].lat, markers[i].lng);
+    var newMarkerCoordinates = new google.maps.LatLng(markers[i].coords.lat, markers[i].coords.lng);
 
     if(radiusCheck(userPosition, newMarkerCoordinates, circle.radius) == true){
-
-      new google.maps.Marker({
-        position: markers[i],
-        map: map,
-        icon: image,
-        animation: google.maps.Animation.DROP
-      });
-
+      createMarker(markers[i].title, markers[i]);
     } else { };
   }
 };
+
+// Gets the location of a vendor on button click
+var getVendorLocation = function(){
+  var deferred = new $.Deferred();
+  // Triggers if gps gives permission
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      deferred.resolve(pos);
+      // Throws error if permission is denied
+    }), function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    };
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+    return deferred.promise();
+};
+
+var createMarker = function(markerTitle, marker){
+  var image = './dooftruck.png';
+  new google.maps.Marker({
+    position: marker.coords,
+    map: map,
+    icon: image,
+    title: marker.title,
+    animation: google.maps.Animation.DROP
+  })
+};
+
+
+
+
+
+
+
+
+
+

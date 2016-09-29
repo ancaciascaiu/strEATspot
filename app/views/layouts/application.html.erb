@@ -45,7 +45,24 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-	
+
+	<div id="location-toggle">
+		<% if vendor_signed_in? %>
+		<p>Toggle to display location:</p>
+			<% if current_vendor.latitude && current_vendor.longitude %>
+				<label class="switch">
+				  <input type="checkbox" checked>
+				  <div class="slider round"></div>
+				</label>
+			<% else %>
+				<label class="switch">
+				  <input type="checkbox">
+				  <div class="slider round"></div>
+				</label>
+			<% end %>
+		<% end %>
+	</div>
+
 	<div class="container"><%= yield %></div>
 </body>
 </html>
