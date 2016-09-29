@@ -77,32 +77,38 @@
 
   <div class="col-sm-6" style="border:solid yellow 2px">
     <% if current_vendor %>
-      <div>
-        <p>I am selling this food category:</p>
+     <div class="row"> 
+      <div class="col-sm-6">
+        <p>I want to sell this food category:</p>
+          <ul>
+            <% Foodcategory.all.each do |foodcategory| %>
+              <% if !current_vendor.foodcategories.include?(foodcategory) %>
+
+                <li><%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
+                  <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
+                  <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
+                  <%= f.submit "#{foodcategory.name}" %>
+                <% end %></li>
+              <% end %>
+            <% end %>
+          </ul>
+      </div>
+
+      <div class="col-sm_6">
+        <p>I am no longer selling this:</p>
         <% Foodcategory.all.each do |foodcategory| %>
-          <% if !current_vendor.foodcategories.include?(foodcategory) %>
-         
-            <%= form_for :vendorscategory, url: vendorscategories_path do |f| %>
+          <% if current_vendor.foodcategories.include?(foodcategory) %>
+            <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
               <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
               <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
               <%= f.submit "#{foodcategory.name}" %>
             <% end %>
           <% end %>
         <% end %>
-        </div>
-        <div>
-          <p>I am no longer selling this:</p>
-          <% Foodcategory.all.each do |foodcategory| %>
-            <% if current_vendor.foodcategories.include?(foodcategory) %>
-              <%= form_for :vendorscategory, method: "delete", url: vendorscategory_path(foodcategory) do |f| %>
-                <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
-                <%= f.hidden_field(:foodcategory_id, :value => foodcategory.id) %>
-                <%= f.submit "#{foodcategory.name}" %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
+      </div>
+     </div>
+     <br>
+      <div>
         <%= form_for :foodcategory, url: foodcategories_path do |f| %>
             <%= f.text_field :name %>
             <%= f.hidden_field(:vendor_id, :value => current_vendor.id) %>
