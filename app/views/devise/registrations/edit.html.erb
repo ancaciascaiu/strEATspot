@@ -72,6 +72,9 @@
       <%= link_to "Back", :back %>
     </div>
 <br>
+
+
+
   <div class="col-sm-6" style="border:solid yellow 2px">
     <% if current_vendor %>
       <div>
@@ -111,10 +114,12 @@
       <div>
         <p>Your current menu:</p>
         <% current_vendor.items.each do |item| %>
-            <%= item.title %> <%= item.description %> <%= item.price %>
+          <div>
+            <%= item.title %>: <%= item.description %>  $<%= item.price %>
             <%= form_for :item, method: "delete", url: item_path(item) do |f| %>
               <%= f.submit "Delete" %>
             <% end %>
+          </div>
         <% end %>
 
         <%= form_for :item, url: items_path do |f| %>
