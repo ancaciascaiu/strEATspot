@@ -1,5 +1,5 @@
-<div class="row" style="border:solid red 2px">
-	<div class="col-sm-6" style="border:solid blue 2px">
+<div class="row">
+	<div class="col-sm-6">
 	  <div class="row" id="location-toggle">
 	  	<div class="col-sm-12">
 			<% if vendor_signed_in? %>
@@ -18,31 +18,30 @@
 			<% end %>
 		</div>
 	  </div>
+	  <br><br>
 	  <div class="row">
+			<div class="col-sm-12">
+				<div><%= render 'filter' %></div>
+			</div>
+		</div>
+	  <div class="row">
+	  	<br>
 	  	<div class="col-sm-12">
-		<% if !vendor_signed_in? && !customer_signed_in? %>
-			
-				<p>Please log in to see your profile and favorites</p>
-			
-		<% elsif vendor_signed_in? %>
-			<li><%= link_to "Edit your profile", edit_vendor_registration_path %></li>
-			<p>Please log in to see your profile and favorites</p>
-		<% end %>
+		
+			<% if vendor_signed_in? %>
+				<%= link_to "Edit your profile", edit_vendor_registration_path, style:"padding-left: 15px" %>
+			<% end %>
 		</div>
 	  </div>
 	
 	</div><br>
 
-	<div class="col-sm-6" style="border:solid yellow 2px">
+	<div class="col-sm-6">
 		<div class="row">
 			<div class="col-sm-12">
 				<%= render(partial: "map") %>
 			</div>
 		</div><br>
-		<div class="row">
-			<div class="col-sm-12">
-				<div><%= render 'filter' %></div>
-			</div>
-		</div>
+		
 	</div>
 <div>
