@@ -1,13 +1,13 @@
 #location-toggle {
-  float: right;
+  /*float: left;*/
   margin: 20px;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: inline-block;
+  /*display: inline-block;*/
   width: 60px;
   height: 34px;
 }
