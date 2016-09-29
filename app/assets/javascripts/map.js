@@ -47,14 +47,14 @@ var getActiveVendors = function(){
 // Store all locations
 var markerArray = [];
 
+  getActiveVendors();
+
 var map;
 
 var radius = 1500;
 
 // Initialize map
 function initMap() {
-
-  getActiveVendors();
 
 // Creates a new map instance
   map = new google.maps.Map(document.getElementById('map'), {
@@ -128,7 +128,7 @@ var getVendorLocation = function(){
 };
 
 var createMarker = function(markerTitle, marker){
-  var image = './dooftruck.png';
+  var image = './marker.png';
   new google.maps.Marker({
     position: marker.coords,
     map: map,
